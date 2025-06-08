@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGW_LIBUI5_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="Category" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CatId"/>
+                </Key>
+                <Property Name="CatId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Category ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="CATEGORYTOBOOK" Relationship="ZGW_LIBUI5_SRV.CATEGORYTOBOOK" FromRole="FromRole_CATEGORYTOBOOK" ToRole="ToRole_CATEGORYTOBOOK"/>
+            </EntityType>
+            <EntityType Name="Book" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bookid"/>
+                    <PropertyRef Name="CatId"/>
+                </Key>
+                <Property Name="Bookid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Book ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CatId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Category ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Title" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Author" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Author" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Publisher" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Publisher" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Zyear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="BookToLoanDetail" Relationship="ZGW_LIBUI5_SRV.BookToLoanDetail" FromRole="FromRole_BookToLoanDetail" ToRole="ToRole_BookToLoanDetail"/>
+            </EntityType>
+            <EntityType Name="LoanHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Lid"/>
+                </Key>
+                <Property Name="Lid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Phone" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Phone" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Email" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LoanDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Loan Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReturnDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Return Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="LoanHeaderToDetail" Relationship="ZGW_LIBUI5_SRV.LoanHeaderToDetail" FromRole="FromRole_LoanHeaderToDetail" ToRole="ToRole_LoanHeaderToDetail"/>
+            </EntityType>
+            <EntityType Name="LoanDetail" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Lid"/>
+                    <PropertyRef Name="Bookid"/>
+                    <PropertyRef Name="CatId"/>
+                </Key>
+                <Property Name="Lid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bookid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Book ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CatId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Category ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Note" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Note" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="BookToLoanDetail" sap:content-version="1">
+                <End Type="ZGW_LIBUI5_SRV.Book" Multiplicity="1" Role="FromRole_BookToLoanDetail"/>
+                <End Type="ZGW_LIBUI5_SRV.LoanDetail" Multiplicity="*" Role="ToRole_BookToLoanDetail"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_BookToLoanDetail">
+                        <PropertyRef Name="CatId"/>
+                        <PropertyRef Name="Bookid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_BookToLoanDetail">
+                        <PropertyRef Name="CatId"/>
+                        <PropertyRef Name="Bookid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="LoanHeaderToDetail" sap:content-version="1">
+                <End Type="ZGW_LIBUI5_SRV.LoanHeader" Multiplicity="1" Role="FromRole_LoanHeaderToDetail"/>
+                <End Type="ZGW_LIBUI5_SRV.LoanDetail" Multiplicity="*" Role="ToRole_LoanHeaderToDetail"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_LoanHeaderToDetail">
+                        <PropertyRef Name="Lid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_LoanHeaderToDetail">
+                        <PropertyRef Name="Lid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CATEGORYTOBOOK" sap:content-version="1">
+                <End Type="ZGW_LIBUI5_SRV.Category" Multiplicity="1" Role="FromRole_CATEGORYTOBOOK"/>
+                <End Type="ZGW_LIBUI5_SRV.Book" Multiplicity="*" Role="ToRole_CATEGORYTOBOOK"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_CATEGORYTOBOOK">
+                        <PropertyRef Name="CatId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_CATEGORYTOBOOK">
+                        <PropertyRef Name="CatId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZGW_LIBUI5_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="CategorySet" EntityType="ZGW_LIBUI5_SRV.Category" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="BookSet" EntityType="ZGW_LIBUI5_SRV.Book" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="LoanHeaderSet" EntityType="ZGW_LIBUI5_SRV.LoanHeader" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="LoanDetailSet" EntityType="ZGW_LIBUI5_SRV.LoanDetail" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="LoanHeaderToDetailSet" Association="ZGW_LIBUI5_SRV.LoanHeaderToDetail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="LoanHeaderSet" Role="FromRole_LoanHeaderToDetail"/>
+                    <End EntitySet="LoanDetailSet" Role="ToRole_LoanHeaderToDetail"/>
+                </AssociationSet>
+                <AssociationSet Name="CATEGORYTOBOOKSet" Association="ZGW_LIBUI5_SRV.CATEGORYTOBOOK" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CategorySet" Role="FromRole_CATEGORYTOBOOK"/>
+                    <End EntitySet="BookSet" Role="ToRole_CATEGORYTOBOOK"/>
+                </AssociationSet>
+                <AssociationSet Name="BookToLoanDetailSet" Association="ZGW_LIBUI5_SRV.BookToLoanDetail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="BookSet" Role="FromRole_BookToLoanDetail"/>
+                    <End EntitySet="LoanDetailSet" Role="ToRole_BookToLoanDetail"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="https://s40lp1.ucc.cit.tum.de:8100/sap/opu/odata/sap/ZGW_LIBUI5_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://s40lp1.ucc.cit.tum.de:8100/sap/opu/odata/sap/ZGW_LIBUI5_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
