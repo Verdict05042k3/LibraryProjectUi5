@@ -13,7 +13,7 @@
 			                 snapToRow="true">
             <GenericTile
                         id="idGenericTile3"
-                        press=""
+                        press="onPressBorrowBook"
                         header="Borrow Book"
                         subheader="Subtitle">
                         <layoutData>
