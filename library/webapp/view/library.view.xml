@@ -1,7 +1,55 @@
 <mvc:View controllerName="ui5.library.controller.library"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content />
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+	xmlns:card="sap.f.cards"
+	xmlns:core="sap.ui.core"
+	xmlns:w="sap.ui.integration.widgets"
+    displayBlock="true">
+      <Page id="idPage1" title="{i18n>title}">
+
+        <f:GridContainer id="grid1"
+			                 class="sapUiSmallMargin"
+			                 snapToRow="true">
+            <GenericTile
+                        id="idGenericTile3"
+                        press=""
+                        header="Borrow Book"
+                        subheader="Subtitle">
+                        <layoutData>
+                            <f:GridContainerItemLayoutData id="idGridContainer3" minRows="2" columns="2" />
+                        </layoutData>
+                        <TileContent id="idTileContent3">
+                            <ImageContent id="ImageContent3" src="sap-icon://address-book" />
+                        </TileContent>
+            </GenericTile>
+                        
+            <GenericTile
+                        id="idGenericTile"
+                        press="onPressManageBook"
+                        header="Manage Book"
+                        subheader="Subtitle">
+                        <layoutData>
+                            <f:GridContainerItemLayoutData id="idGridContainer" minRows="2" columns="2" />
+                        </layoutData>
+                        <TileContent id="idTileContent">
+                            <ImageContent id="ImageContent" src="sap-icon://address-book" />
+                        </TileContent>
+            </GenericTile>
+        
+            <GenericTile
+                    id="idGenericTile2"
+                    press=""
+                    header="Manage return book"
+                    subheader="Subtitle">
+                    <layoutData>
+                        <f:GridContainerItemLayoutData id="idGridContainer2" minRows="2" columns="2" />
+                    </layoutData>
+                    <TileContent id="idTileContent2">
+                        <ImageContent id="ImageContent2" src="sap-icon://address-book" />
+                    </TileContent>
+            </GenericTile>
+        </f:GridContainer>
+
     </Page>
 </mvc:View>

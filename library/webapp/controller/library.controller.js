@@ -1,10 +1,10 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
+      "./BaseController"
 ],
-function (Controller) {
+function (BaseController) {
     "use strict";
 
-    return Controller.extend("ui5.library.controller.library", {
+    return BaseController.extend("ui5.library.controller.library", {
         onInit: function () {
 
         }
