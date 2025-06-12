@@ -45,6 +45,10 @@
     },
     "sap.ui5": {
         "flexEnabled": true,
+        "async": true,
+        "bundle":{
+            "components": false
+        },
         "dependencies": {
             "minUI5Version": "1.108.33",
             "libs": {
@@ -66,7 +70,11 @@
             "": {
                 "dataSource": "mainService",
                 "preload": true,
-                "settings": {}
+                "settings": {
+                    "useBatch": false,
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline"
+                }
             }
         },
         "resources": {
@@ -81,27 +89,42 @@
                 "routerClass": "sap.m.routing.Router",
                 "viewType": "XML",
                 "async": true,
-                "viewPath": "ui5.library.view",
+                "path": "ui5.library.view",
                 "controlAggregation": "pages",
                 "controlId": "app",
                 "clearControlAggregation": false
             },
             "routes": [
                 {
-                    "name": "Routelibrary",
+                    "name": "library",
                     "pattern": ":?query:",
                     "target": [
-                        "Targetlibrary"
+                        "TargetLibrary"
+                    ]
+                },
+                {
+                    "name": "Category",
+                    "pattern": "Category",
+                    "target": [
+                        "TargetCategory"
                     ]
                 }
+
             ],
             "targets": {
-                "Targetlibrary": {
+                "TargetLibrary": {
                     "viewType": "XML",
                     "transition": "slide",
                     "clearControlAggregation": false,
                     "viewId": "library",
                     "viewName": "library"
+                },
+                "TargetCategory": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Category",
+                    "viewName": "ManageBook.Category"
                 }
             }
         },

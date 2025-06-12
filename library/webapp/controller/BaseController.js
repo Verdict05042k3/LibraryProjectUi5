@@ -73,7 +73,7 @@ function (Controller, UIComponent, History) {
 			if (sPreviousHash !== undefined) {
 				window.history.go(-1);
 			} else {
-				this.getRouter().navTo("home", {} , true);
+				this.getRouter().navTo("library", {} , true);
 			}
 		}
     });

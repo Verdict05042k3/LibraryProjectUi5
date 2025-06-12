@@ -1,0 +1,78 @@
+<mvc:View 
+    controllerName="ui5.library.controller.ManageBook.Category"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+>
+
+<f:DynamicPage id="dynaamicPageId" toggleHeaderOnTitleClick="true">
+    <f:title>
+        <f:DynamicPageTitle id="dynamicPageTitle">
+            <f:actions>
+                <Button id="idButton1" text="Back" press="onNavBack" class="sapUiTinyMarginEnd"/>
+            </f:actions>
+
+            <f:heading> 
+                <Title id="idText1" text="Category"></Title>
+            </f:heading>
+        </f:DynamicPageTitle>
+    </f:title>
+
+    <f:content>
+        <Table id="productsTable"
+               inset="false"
+               growing="true"
+               class="sapFDynamicPageAlignContainer"
+               width="auto"
+               items="{/Category}"
+        >
+        <headerToolbar>
+			<OverflowToolbar id="headerToolbar" class="sapFDynamicPageAlignContainer">
+				<ToolbarSpacer id="idToolbarSpacer"/>
+				<SearchField id="idSearch" search="onSearch" width="17.5rem"/>
+			</OverflowToolbar>
+	    </headerToolbar>
+
+        <columns>
+            <Column id="idColumn1" width="25%">
+                <Text id="idText2" text="Category Name"/>
+            </Column>
+            <Column id="idColumn2" width="35%">
+                <Text id="idText3" text="Description"/>
+            </Column>
+            <Column id="idColumn3" width="20%">
+                <Text id="idText4" text="Status"/>
+            </Column>
+            <Column id="idColumn4" width="20%">
+                <Text id="idText5" text="Actions"/>
+            </Column>   
+        </columns>
+
+        <items>
+            <ColumnListItem id="idColumnListItem" type="Navigation" press="onListItemPress" vAlign="Middle">
+                <cells>
+                     <ObjectIdentifier id="idObjectIdentifier1"  text="{Name}" />
+                     <ObjectIdentifier id="idObjectIdentifier2"  text="{Description}" />
+                     <ObjectIdentifier id="idObjectIdentifier3" text="{Status}" />
+                     <HBox id="idHBox1" class="sapUiSmallMarginEnd" renderType="Bare">
+                         <Button id="btnEdit"
+                                 icon="sap-icon://edit" 
+                                 type="Transparent" 
+                                 press="onEditBook"
+                                 tooltip="Edit"/>
+                         <Button id="btnDelete"
+                                 icon="sap-icon://delete" 
+                                 type="Transparent" 
+                                 press="onDeleteBook"
+                                 tooltip="Delete"/>
+                     </HBox>
+                </cells>
+            </ColumnListItem>       
+        </items>
+        </Table>
+    </f:content>
+
+</f:DynamicPage>
+
+</mvc:View>
