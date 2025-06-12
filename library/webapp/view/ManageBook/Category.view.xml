@@ -25,7 +25,7 @@
                growing="true"
                class="sapFDynamicPageAlignContainer"
                width="auto"
-               items="{/Category}"
+               items="{/CategorySet}"
         >
         <headerToolbar>
 			<OverflowToolbar id="headerToolbar" class="sapFDynamicPageAlignContainer">
@@ -52,9 +52,12 @@
         <items>
             <ColumnListItem id="idColumnListItem" type="Navigation" press="onListItemPress" vAlign="Middle">
                 <cells>
-                     <ObjectIdentifier id="idObjectIdentifier1"  text="{Category>Name}" />
-                     <ObjectIdentifier id="idObjectIdentifier2"  text="{Category>Description}" />
-                     <ObjectIdentifier id="idObjectIdentifier3" text="{Category>Status}" />
+                     <ObjectIdentifier id="idObjectIdentifier1"  text="{Name}" />
+                     <ObjectIdentifier id="idObjectIdentifier2"  text="{Description}" />
+                    <ObjectStatus   id="idObjectStatus"
+                                    text="{Status}"
+                                    state="{= ${Status} === 'AVAILABLE' ? 'Success' : 'Error'}" />
+
                      <HBox id="idHBox1" class="sapUiSmallMarginEnd" renderType="Bare">
                          <Button id="btnEdit"
                                  icon="sap-icon://edit" 
