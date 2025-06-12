@@ -52,9 +52,9 @@
         <items>
             <ColumnListItem id="idColumnListItem" type="Navigation" press="onListItemPress" vAlign="Middle">
                 <cells>
-                     <ObjectIdentifier id="idObjectIdentifier1"  text="{Name}" />
-                     <ObjectIdentifier id="idObjectIdentifier2"  text="{Description}" />
-                     <ObjectIdentifier id="idObjectIdentifier3" text="{Status}" />
+                     <ObjectIdentifier id="idObjectIdentifier1"  text="{Category>Name}" />
+                     <ObjectIdentifier id="idObjectIdentifier2"  text="{Category>Description}" />
+                     <ObjectIdentifier id="idObjectIdentifier3" text="{Category>Status}" />
                      <HBox id="idHBox1" class="sapUiSmallMarginEnd" renderType="Bare">
                          <Button id="btnEdit"
                                  icon="sap-icon://edit" 
