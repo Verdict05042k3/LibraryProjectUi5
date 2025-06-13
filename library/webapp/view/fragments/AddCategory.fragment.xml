@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog
+        id="addCategoryDialog"
+        title="Add New Category"
+        draggable="true"
+        resizable="true"
+        contentWidth="30rem"
+        contentHeight="auto">
+        
+        <VBox id="idVbox" class="sapUiSmallMargin">
+            <Title id="idTitle1" text="Category Name" level="H2" />
+            <Input id="inputCategoryName" placeholder="Enter Category Name" width="100%"/>
+            
+            <Title id="idTitle2" text="Description" level="H2" />
+            <TextArea id="inputDescription" placeholder="Enter Description" width="100%" rows="4"/>
+            
+            <Title id="idTitle3" text="Status" level="H2" />
+            <Select id="selectStatus" width="100%">
+                <items>
+                    <core:Item id="idcoreItem1" key="Active" text="Active"/>
+                    <core:Item id="idcoreItem2" key="Deactive" text="Deactive"/>
+                </items>
+            </Select>
+        </VBox>
+        
+        <beginButton>
+            <Button id="idbtnsave1" text="Save" type="Emphasized" press="onSaveCategory"/>
+        </beginButton>
+        <endButton>
+            <Button id="idbtncancel1" text="Cancel" press="onCancelAddCategory"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>
