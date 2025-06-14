@@ -8,17 +8,29 @@
         contentHeight="auto">
         
         <VBox id="idVbox" class="sapUiSmallMargin">
-            <Title id="idTitle1" text="Category Name" level="H2" />
-            <Input id="inputCategoryName" placeholder="Enter Category Name" width="100%"/>
+            <Label id="idTitle1" text="Category Name" required="true" design="Bold"  />
+            <Input id="inputCategoryName" 
+                   value="{addCategory>/Name}" 
+                   valueState="{=${validationCategory>/Name} ? 'None' : 'Error'}"
+                   placeholder="Enter Category Name" 
+                   valueLiveUpdate="true"
+                   width="100%"/>
             
-            <Title id="idTitle2" text="Description" level="H2" />
-            <TextArea id="inputDescription" placeholder="Enter Description" width="100%" rows="4"/>
+            <Label id="idTitle2" text="Description" required="true" design="Bold" />
+            <TextArea id="inputDescription" 
+                      value="{addCategory>/Description}"
+                      valueState="{=${validationCategory>/Description} ? 'None' : 'Error'}" 
+                      placeholder="Enter Description" 
+                      width="100%" rows="4"/>
             
-            <Title id="idTitle3" text="Status" level="H2" />
-            <Select id="selectStatus" width="100%">
+            <Label id="idTitle3" text="Status" required="true" design="Bold"/>
+            <Select id="selectStatus" 
+                    width="100%" 
+                    items="{StatusModel>/status}" 
+                    valueState="{=${validationCategory>/Status} ? 'None' : 'Error'}" 
+                    selectedKey="{addCategory>/Status}">
                 <items>
-                    <core:Item id="idcoreItem1" key="Active" text="Active"/>
-                    <core:Item id="idcoreItem2" key="Deactive" text="Deactive"/>
+                    <core:Item id="idcoreItem1" key="{StatusModel>key}" text="{StatusModel>text}"/>
                 </items>
             </Select>
         </VBox>

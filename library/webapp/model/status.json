@@ -1,0 +1,7 @@
+{
+    "status": [
+        { "key": "", "text": "" },
+        { "key": "Active", "text": "Active" },
+        { "key": "Deactive", "text": "Deactive"}
+    ]
+}

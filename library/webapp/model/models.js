@@ -1,20 +1,26 @@
 sap.ui.define([
     "sap/ui/model/json/JSONModel",
-    "sap/ui/Device"
+    "sap/ui/model/BindingMode"
 ], 
-function (JSONModel, Device) {
+function (JSONModel, BindingMode) {
     "use strict";
 
     return {
-        /**
-         * Provides runtime information for the device the UI5 app is running on as a JSONModel.
-         * @returns {sap.ui.model.json.JSONModel} The device model.
-         */
-        createDeviceModel: function () {
-            var oModel = new JSONModel(Device);
-            oModel.setDefaultBindingMode("OneWay");
-            return oModel;
-        }
-    };
+        addCategory: function () {
+            return new JSONModel({
+                CatId:"",
+                Name: "",
+                Description: "",
+                Status: ""
+            }).setDefaultBindingMode(BindingMode.TwoWay);
+        },
 
+        validateCategory: function () {
+            return new JSONModel({
+                Name:true,
+                Description: true,
+                Status: true
+            }).setDefaultBindingMode(BindingMode.TwoWay);
+        }
+    }
 });

@@ -75,6 +75,11 @@
                     "defaultBindingMode": "TwoWay",
                     "defaultCountMode": "Inline"
                 }
+            },
+            "StatusModel":{
+                "type" : "sap.ui.model.json.JSONModel",
+                "uri": "model/status.json",
+                "preload": true
             }
         },
         "resources": {
@@ -92,7 +97,10 @@
                 "path": "ui5.library.view",
                 "controlAggregation": "pages",
                 "controlId": "app",
-                "clearControlAggregation": false
+                "clearControlAggregation": false,
+                "bypassed": {
+                    "target": "TargetNotFound"
+                }
             },
             "routes": [
                 {
@@ -125,6 +133,10 @@
                     "clearControlAggregation": false,
                     "viewId": "Category",
                     "viewName": "ManageBook.Category"
+                },
+                "TargetNotFound":{
+                    "viewId": "notfound",
+                    "viewName": "notfound"
                 }
             }
         },

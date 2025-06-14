@@ -26,6 +26,7 @@
                growingScrollToLoad="false"	
                class="sapUiSmallMarginTop listWithSmallerTitle"
                width="auto"
+               sticky="HeaderToolbar,ColumnHeaders"
                growingThreshold="auto"
                items="{/CategorySet}"
         >
@@ -66,12 +67,12 @@
                          <Button id="btnEdit"
                                  icon="sap-icon://edit" 
                                  type="Transparent" 
-                                 press="onEditBook"
+                                 press="onEditCategory"
                                  tooltip="Edit"/>
                          <Button id="btnDelete"
                                  icon="sap-icon://delete" 
                                  type="Transparent" 
-                                 press="onDeleteBook"
+                                 press="onDeleteCategory"
                                  tooltip="Delete"/>
                      </HBox>
                 </cells>
