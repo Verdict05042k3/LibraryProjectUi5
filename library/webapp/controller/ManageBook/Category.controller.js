@@ -277,5 +277,53 @@ sap.ui.define([
                 this.onUpdateCategory();
             }
         },
+        onSearch: function (oEvent) {
+            // Nếu người dùng nhấn nút refresh
+            if (oEvent.getParameters().refreshButtonPressed) {
+                this.onRefresh();
+                return;
+            }
+
+            var sQuery = oEvent.getParameter("query");
+            var aTableSearchState = [];
+
+            // Nếu có từ khóa tìm kiếm
+            if (sQuery && sQuery.length > 0) {
+                // Tạo filter theo nhiều trường, nối điều kiện OR
+                aTableSearchState = [
+                    new Filter({
+                        filters: [
+                            new Filter("Name", FilterOperator.Contains, sQuery)
+                        ],
+                        and: false // OR condition
+                    })
+                ];
+            }
+
+            // Apply search
+            this._applySearch(aTableSearchState);
+        },
+
+        onRefresh: function () {
+            var oTable = this.byId("productsTable");
+            oTable.getBinding("items").refresh();
+        },
+
+        _applySearch: function (aTableSearchState) {
+            var oTable = this.byId("productsTable");
+            var oBinding = oTable.getBinding("items");
+
+            // Apply filter to the binding
+            oBinding.filter(aTableSearchState, "Application");
+
+            // Update no data text if no results found
+            if (aTableSearchState.length > 0 && oBinding.getLength() === 0) {
+                oTable.setNoDataText("No matching categories found.");
+            } else {
+                oTable.setNoDataText("No categories available.");
+            }
+        }
+
+
     });
 });
