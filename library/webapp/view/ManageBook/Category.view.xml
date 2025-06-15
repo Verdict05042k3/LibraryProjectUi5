@@ -56,7 +56,7 @@
         <items>
             <ColumnListItem id="idColumnListItem" type="Navigation" press="onListItemPress" vAlign="Middle">
                 <cells>
-                     <ObjectIdentifier id="idObjectIdentifier1"  text="{Name}" />
+                     <ObjectIdentifier id="idObjectIdentifier1"  text="{Name}({CatId})" />
                      <ObjectIdentifier id="idObjectIdentifier2"  text="{Description}" />
                      <ObjectStatus id="idObjectStatus"
                                 text="{Status}"

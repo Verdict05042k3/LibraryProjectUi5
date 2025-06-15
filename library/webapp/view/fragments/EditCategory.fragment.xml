@@ -1,45 +1,45 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
     <Dialog
-        id="addCategoryDialog"
-        title="Add New Category"
+        id="EditCategoryDialog"
+        title="Edit Category"
         draggable="true"
         resizable="true"
         contentWidth="30rem"
         contentHeight="auto">
         
-        <VBox id="idVbox" class="sapUiSmallMargin">
-            <Label id="idTitle1" text="Category Name" required="true" design="Bold"  />
-            <Input id="inputCategoryName" 
+        <VBox id="idVbox1" class="sapUiSmallMargin">
+            <Label id="idTitle4" text="Category Name" required="true" design="Bold"  />
+            <Input id="inputCategoryName5" 
                    value="{addCategory>/Name}" 
                    valueState="{=${validationCategory>/Name} ? 'None' : 'Error'}"
                    placeholder="Enter Category Name" 
                    valueLiveUpdate="true"
                    width="100%"/>
             
-            <Label id="idTitle2" text="Description" required="true" design="Bold" />
-            <TextArea id="inputDescription" 
+            <Label id="idTitle23" text="Description" required="true" design="Bold" />
+            <TextArea id="inputDescription1" 
                       value="{addCategory>/Description}"
                       valueState="{=${validationCategory>/Description} ? 'None' : 'Error'}" 
                       placeholder="Enter Description" 
                       width="100%" rows="4"/>
             
-            <Label id="idTitle3" text="Status" required="true" design="Bold"/>
-            <Select id="selectStatus" 
+            <Label id="idTitle31" text="Status" required="true" design="Bold"/>
+            <Select id="selectStatus1" 
                     width="100%" 
                     items="{StatusModel>/status}" 
                     valueState="{=${validationCategory>/Status} ? 'None' : 'Error'}" 
                     selectedKey="{addCategory>/Status}">
                 <items>
-                    <core:Item id="idcoreItem1" key="{StatusModel>key}" text="{StatusModel>text}"/>
+                    <core:Item id="idcoreItem11" key="{StatusModel>key}" text="{StatusModel>text}"/>
                 </items>
             </Select>
         </VBox>
         
         <beginButton>
-            <Button id="idbtnsave1" text="Save" type="Emphasized" press="onSubmitCategory"/>
+            <Button id="idbtnsave11" text="Save" type="Emphasized" press="onSubmitCategory"/>
         </beginButton>
         <endButton>
-            <Button id="idbtncancel1" text="Cancel" press="onCancelAddCategory"/>
+            <Button id="idbtncancel11" text="Cancel" press="onCancelAddCategory"/>
         </endButton>
     </Dialog>
 </core:FragmentDefinition>
