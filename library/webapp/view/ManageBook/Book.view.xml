@@ -1,0 +1,94 @@
+<mvc:View
+    controllerName="ui5.library.controller.ManageBook.Book"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.f.semantic"
+    xmlns="sap.m"
+    xmlns:f="sap.f">
+
+    <f:DynamicPage id="objectPage" toggleHeaderOnTitleClick="false">
+
+        <!-- Header -->
+        <f:title>
+            <f:DynamicPageTitle id="objectPageTitle">
+                <f:heading>
+                    <Title id="categoryTitle" text="{CategoryModel>/Name}" level="H1" class="sapUiSmallMarginEnd" />
+                </f:heading>
+
+                <f:actions>
+                    <ObjectStatus id="categoryStatus" text="{CategoryModel>/Status}" state="{= ${CategoryModel>/Status}.toLowerCase() === 'active' ? 'Success' : 'Error'}" />
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+
+
+
+        <!-- Content -->
+        <f:content>
+            <!-- Chỉ cho phép 1 control: Dùng VBox để chứa nhiều control -->
+            <VBox id="vboxContent" fitContainer="true" class="sapUiSmallMargin">
+
+                <!-- Toolbar -->
+                <Toolbar id="toolbarBookActions">
+                    <Title id="titleBookActions" text="Book Count" />
+                    <ToolbarSpacer id="toolbarSpacerBook" />
+                    <Button id="btnAddBook" icon="sap-icon://add" text="Add" />
+                    <Button id="btnDeleteSelected" icon="sap-icon://delete" text="Delete" />
+                    <SearchField id="searchFieldBook" width="30%" placeholder="Search books..." />
+                </Toolbar>
+
+                <!-- Book List -->
+                <Table id="bookTable"
+                       mode="MultiSelect"
+                       growing="true"
+                       growingScrollToLoad="true"
+                       growingThreshold="20">
+
+                    <columns>
+                        <Column id="colBookId">
+                            <Text id="textColBookId" text="Book ID" />
+                        </Column>
+                        <Column id="colBookTitle">
+                            <Text id="textColBookTitle" text="Title" />
+                        </Column>
+                        <Column id="colBookAuthor">
+                            <Text id="textColBookAuthor" text="Author" />
+                        </Column>
+                        <Column id="colBookPublishedDate">
+                            <Text id="textColBookPublishedDate" text="Published Date" />
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem id="itemBook1" type="Navigation">
+                            <cells>
+                                <Text id="textBookId1" text="B001" />
+                                <Text id="textBookTitle1" text="Learn SAPUI5" />
+                                <Text id="textBookAuthor1" text="John Doe" />
+                                <Text id="textBookPublishedDate1" text="2024-01-15" />
+                            </cells>
+                        </ColumnListItem>
+
+                        <ColumnListItem id="itemBook2" type="Navigation">
+                            <cells>
+                                <Text id="textBookId2" text="B002" />
+                                <Text id="textBookTitle2" text="Mastering ABAP" />
+                                <Text id="textBookAuthor2" text="Jane Smith" />
+                                <Text id="textBookPublishedDate2" text="2023-11-10" />
+                            </cells>
+                        </ColumnListItem>
+
+                        <ColumnListItem id="itemBook3" type="Navigation">
+                            <cells>
+                                <Text id="textBookId3" text="B003" />
+                                <Text id="textBookTitle3" text="Fiori Design Guidelines" />
+                                <Text id="textBookAuthor3" text="Albert Nguyen" />
+                                <Text id="textBookPublishedDate3" text="2022-08-05" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </f:content>
+
+    </f:DynamicPage>
+</mvc:View>

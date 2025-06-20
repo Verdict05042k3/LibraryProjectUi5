@@ -322,6 +322,16 @@ sap.ui.define([
             } else {
                 oTable.setNoDataText("No categories available.");
             }
+        },
+        onListBookPress: function (oEvent) {
+            var oItem = oEvent.getSource(); // Button -> HBox -> ColumnListItem
+            var oContext = oItem.getBindingContext();
+            var sCategoryId = oContext.getProperty("CatId"); // Lấy CatId của dòng được chọn
+            console.log("Selected Category ID: ", sCategoryId);
+            // Chuyển đến trang danh sách sách với tham số CatId
+            this.getRouter().navTo("Book", {
+                CatId: sCategoryId
+            });
         }
 
 

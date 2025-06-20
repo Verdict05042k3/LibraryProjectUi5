@@ -116,6 +116,13 @@
                     "target": [
                         "TargetCategory"
                     ]
+                },
+                {
+                    "name": "Book",
+                    "pattern": "Book/Category/{CatId}:?query:",
+                    "target": [
+                        "TargetBook"
+                    ]
                 }
 
             ],
@@ -137,6 +144,13 @@
                 "TargetNotFound":{
                     "viewId": "notfound",
                     "viewName": "notfound"
+                },
+                "TargetBook": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Book",
+                    "viewName": "ManageBook.Book"
                 }
             }
         },
