@@ -5,84 +5,88 @@
     xmlns="sap.m"
     xmlns:f="sap.f">
 
-    <f:DynamicPage id="objectPage" toggleHeaderOnTitleClick="false">
+    <Page id="idPageBook" navButtonPress="onNavBack" title="Manage Books" showNavButton="true" class="sapUiContentPadding">
+
+       <f:DynamicPage id="objectPage" toggleHeaderOnTitleClick="false">
 
         <!-- Header -->
+
         <f:title>
             <f:DynamicPageTitle id="objectPageTitle">
                 <f:heading>
-                    <Title id="categoryTitle" text="{CategoryModel>/Name}" level="H1" class="sapUiSmallMarginEnd" />
+                    <VBox id="vboxHeader" class="sapUiSmallMargin">
+                        <Text
+                            id="categoryName"
+                            text="Category Name: {CategoryModel>/Name}"
+                            wrapping="true"
+                            class="sapUiSmallMarginEnd" />
+                        <Text
+                            id="categoryDescription1"
+                            text="Category Description: {CategoryModel>/Description}"
+                            wrapping="true"
+                            class="sapUiSmallMarginEnd" />
+                    </VBox>
                 </f:heading>
 
                 <f:actions>
-                    <ObjectStatus id="categoryStatus" text="{CategoryModel>/Status}" state="{= ${CategoryModel>/Status}.toLowerCase() === 'active' ? 'Success' : 'Error'}" />
+                    <VBox id="vboxCategoryStatus" alignItems="Center" justifyContent="Center" class="sapUiSmallMarginEnd">
+                        <ObjectStatus
+                            class="custimObjectStatus"
+                            id="categoryStatus"
+                            text="{CategoryModel>/Status}"
+                            state="{= ${CategoryModel>/Status}.toLowerCase() === 'active' ? 'Success' : 'Error'}" />
+                    </VBox>
                 </f:actions>
             </f:DynamicPageTitle>
         </f:title>
-
-
 
         <!-- Content -->
         <f:content>
             <!-- Chỉ cho phép 1 control: Dùng VBox để chứa nhiều control -->
             <VBox id="vboxContent" fitContainer="true" class="sapUiSmallMargin">
 
-                <!-- Toolbar -->
-                <Toolbar id="toolbarBookActions">
-                    <Title id="titleBookActions" text="Book Count" />
-                    <ToolbarSpacer id="toolbarSpacerBook" />
-                    <Button id="btnAddBook" icon="sap-icon://add" text="Add" />
-                    <Button id="btnDeleteSelected" icon="sap-icon://delete" text="Delete" />
-                    <SearchField id="searchFieldBook" width="30%" placeholder="Search books..." />
-                </Toolbar>
-
                 <!-- Book List -->
                 <Table id="bookTable"
                        mode="MultiSelect"
                        growing="true"
+                       sticky="HeaderToolbar,ColumnHeaders"
                        growingScrollToLoad="true"
+                       items="{/BookSet}"
                        growingThreshold="20">
-
+                    <headerToolbar>
+                        <OverflowToolbar id="headerToolbar1" class="sapFDynamicPageAlignContainer">
+                            <Title id="titleBookActions" text="Book({bookCountModel>/count})" />
+                            <ToolbarSpacer id="toolbarSpacerBook" />
+                            <Button id="btnAddBook" icon="sap-icon://add" text="Add" press="onAddBook" />
+                            <Button id="btnDeleteSelected" icon="sap-icon://delete" text="Delete" press="onDeleteSelectedBooks"/>
+                        </OverflowToolbar>
+                    </headerToolbar>
                     <columns>
-                        <Column id="colBookId">
-                            <Text id="textColBookId" text="Book ID" />
-                        </Column>
                         <Column id="colBookTitle">
-                            <Text id="textColBookTitle" text="Title" />
+                            <Text id="textColBookTitle" text="Name" />
                         </Column>
                         <Column id="colBookAuthor">
                             <Text id="textColBookAuthor" text="Author" />
                         </Column>
                         <Column id="colBookPublishedDate">
-                            <Text id="textColBookPublishedDate" text="Published Date" />
+                            <Text id="textColBookPublishedDate" text="Publisher" />
+                        </Column>
+                        <Column id="yearColumn">
+                            <Text id="textColBookYear" text="Year" />
+                        </Column>
+                        <Column id="colBookQuantity">
+                            <Text id="textColBookQuantity" text="Quantity" />
                         </Column>
                     </columns>
 
                     <items>
-                        <ColumnListItem id="itemBook1" type="Navigation">
+                        <ColumnListItem id="itemBookTemplate" type="Navigation" press="onBookPress">
                             <cells>
-                                <Text id="textBookId1" text="B001" />
-                                <Text id="textBookTitle1" text="Learn SAPUI5" />
-                                <Text id="textBookAuthor1" text="John Doe" />
-                                <Text id="textBookPublishedDate1" text="2024-01-15" />
-                            </cells>
-                        </ColumnListItem>
-
-                        <ColumnListItem id="itemBook2" type="Navigation">
-                            <cells>
-                                <Text id="textBookId2" text="B002" />
-                                <Text id="textBookTitle2" text="Mastering ABAP" />
-                                <Text id="textBookAuthor2" text="Jane Smith" />
-                                <Text id="textBookPublishedDate2" text="2023-11-10" />
-                            </cells>
-                        </ColumnListItem>
-
-                        <ColumnListItem id="itemBook3" type="Navigation">
-                            <cells>
-                                <Text id="textBookId3" text="B003" />
-                                <Text id="textBookTitle3" text="Fiori Design Guidelines" />
-                                <Text id="textBookAuthor3" text="Albert Nguyen" />
-                                <Text id="textBookPublishedDate3" text="2022-08-05" />
+                                <Text id="textBookTitle" text="{Title}" />
+                                <Text id="textBookAuthor" text="{Author}" />
+                                <Text id="textBookPublishedDate" text="{Publisher}" />
+                                <Text id="textBookYear" text="{Zyear}" />
+                                <Text id="textBookQuantity" text="{Quantity}" />
                             </cells>
                         </ColumnListItem>
                     </items>
@@ -91,4 +95,5 @@
         </f:content>
 
     </f:DynamicPage>
+    </Page>
 </mvc:View>

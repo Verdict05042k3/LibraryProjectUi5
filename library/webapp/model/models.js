@@ -21,6 +21,27 @@ function (JSONModel, BindingMode) {
                 Description: true,
                 Status: true
             }).setDefaultBindingMode(BindingMode.TwoWay);
+        },
+
+        AddBook: function () {
+            return new JSONModel({
+                BookId: "",
+                CatId: "",
+                Title: "",
+                Author: "",
+                Publisher: "",
+                Year: "",
+                Quantity: ""
+            }).setDefaultBindingMode(BindingMode.TwoWay);
+        },
+        validateBook: function () {
+            return new JSONModel({
+                Title: true,
+                Author: true,
+                Publisher: true,
+                Year: true,
+                Quantity: true
+            });
         }
-    }
+    };
 });

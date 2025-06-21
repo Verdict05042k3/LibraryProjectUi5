@@ -6,81 +6,79 @@
     xmlns:core="sap.ui.core"
 >
 
-<f:DynamicPage id="dynaamicPageId" toggleHeaderOnTitleClick="true">
-    <f:title>
-        <f:DynamicPageTitle id="dynamicPageTitle">
-            <f:actions>
-                <Button id="idButton1" text="Back" press="onNavBack" class="sapUiTinyMarginEnd"/>
-            </f:actions>
+    <Page id="idPageCategory" navButtonPress="onNavBack" title="Manage Categories" showNavButton="true" class="sapUiContentPadding">
+        <f:DynamicPage id="dynaamicPageId" toggleHeaderOnTitleClick="true">
+            <f:title>
+                <f:DynamicPageTitle id="dynamicPageTitle">
+                    <f:heading> 
+                        <Title id="idText1" text="Category({CategoryCount>/count})"></Title>
+                    </f:heading>
+                </f:DynamicPageTitle>
+            </f:title>
 
-            <f:heading> 
-                <Title id="idText1" text="Category({CategoryCount>/count})"></Title>
-            </f:heading>
-        </f:DynamicPageTitle>
-    </f:title>
+            <f:content>
+                <Table id="productsTable"
+                    inset="false"
+                    growing="true"
+                    growingScrollToLoad="false"	
+                    class="sapUiSmallMarginTop listWithSmallerTitle"
+                    width="auto"
+                    sticky="HeaderToolbar,ColumnHeaders"
+                    growingThreshold="auto"
+                    items="{/CategorySet}"
+                >
+                <headerToolbar>
+                    <OverflowToolbar id="headerToolbar" class="sapFDynamicPageAlignContainer">
+                        <ToolbarSpacer id="idToolbarSpacer"/>
+                        <Button id="btn23" icon="sap-icon://add" press="onPressAddCategory" />
+                        <SearchField id="idSearch" search="onSearch" placeholder="Search categories name" width="17.5rem"/>
+                    </OverflowToolbar>
+                </headerToolbar>
 
-    <f:content>
-        <Table id="productsTable"
-               inset="false"
-               growing="true"
-               growingScrollToLoad="false"	
-               class="sapUiSmallMarginTop listWithSmallerTitle"
-               width="auto"
-               sticky="HeaderToolbar,ColumnHeaders"
-               growingThreshold="auto"
-               items="{/CategorySet}"
-        >
-        <headerToolbar>
-			<OverflowToolbar id="headerToolbar" class="sapFDynamicPageAlignContainer">
-                <ToolbarSpacer id="idToolbarSpacer"/>
-                <Button id="btn23" icon="sap-icon://add" press="onPressAddCategory" />
-				<SearchField id="idSearch" search="onSearch" width="17.5rem"/>
-			</OverflowToolbar>
-	    </headerToolbar>
+                <columns>
+                    <Column id="idColumn1" width="25%">
+                        <Text id="idText2" text="Category Name"/>
+                    </Column>
+                    <Column id="idColumn2" width="35%">
+                        <Text id="idText3" text="Description"/>
+                    </Column>
+                    <Column id="idColumn3" width="20%">
+                        <Text id="idText4" text="Status"/>
+                    </Column>
+                    <Column id="idColumn4" width="20%">
+                        <Text id="idText5" text="Actions"/>
+                    </Column>   
+                </columns>
 
-        <columns>
-            <Column id="idColumn1" width="25%">
-                <Text id="idText2" text="Category Name"/>
-            </Column>
-            <Column id="idColumn2" width="35%">
-                <Text id="idText3" text="Description"/>
-            </Column>
-            <Column id="idColumn3" width="20%">
-                <Text id="idText4" text="Status"/>
-            </Column>
-            <Column id="idColumn4" width="20%">
-                <Text id="idText5" text="Actions"/>
-            </Column>   
-        </columns>
-
-        <items>
-            <ColumnListItem id="idColumnListItem" type="Navigation" press="onListBookPress" vAlign="Middle">
-                <cells>
-                     <ObjectIdentifier id="idObjectIdentifier1"  text="{Name}({CatId})" />
-                     <ObjectIdentifier id="idObjectIdentifier2"  text="{Description}" />
-                     <ObjectStatus id="idObjectStatus"
-                                text="{Status}"
-                                state="{= ${Status}.toLowerCase() === 'active' ? 'Success' : 'Error'}" />
+                <items>
+                    <ColumnListItem id="idColumnListItem" type="Navigation" press="onListBookPress" vAlign="Middle">
+                        <cells>
+                            <ObjectIdentifier id="idObjectIdentifier1"  text="{Name}({CatId})" />
+                            <ObjectIdentifier id="idObjectIdentifier2"  text="{Description}" />
+                            <ObjectStatus id="idObjectStatus"
+                                        text="{Status}"
+                                        state="{= ${Status}.toLowerCase() === 'active' ? 'Success' : 'Error'}" />
 
 
-                     <HBox id="idHBox1" class="sapUiSmallMarginEnd" renderType="Bare">
-                         <Button id="btnEdit"
-                                 icon="sap-icon://edit" 
-                                 type="Transparent" 
-                                 press="onEditCategory"
-                                 tooltip="Edit"/>
-                         <Button id="btnDelete"
-                                 icon="sap-icon://delete" 
-                                 type="Transparent" 
-                                 press="onDeleteCategory"
-                                 tooltip="Delete"/>
-                     </HBox>
-                </cells>
-            </ColumnListItem>       
-        </items>
-        </Table>
-    </f:content>
+                            <HBox id="idHBox1" class="sapUiSmallMarginEnd" renderType="Bare">
+                                <Button id="btnEdit"
+                                        icon="sap-icon://edit" 
+                                        type="Transparent" 
+                                        press="onEditCategory"
+                                        tooltip="Edit"/>
+                                <Button id="btnDelete"
+                                        icon="sap-icon://delete" 
+                                        type="Transparent" 
+                                        press="onDeleteCategory"
+                                        tooltip="Delete"/>
+                            </HBox>
+                        </cells>
+                    </ColumnListItem>       
+                </items>
+                </Table>
+            </f:content>
 
-</f:DynamicPage>
+        </f:DynamicPage>
+    </Page>
 
 </mvc:View>

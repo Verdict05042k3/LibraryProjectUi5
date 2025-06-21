@@ -312,16 +312,25 @@ sap.ui.define([
         _applySearch: function (aTableSearchState) {
             var oTable = this.byId("productsTable");
             var oBinding = oTable.getBinding("items");
+            var oView = this.getView();
 
-            // Apply filter to the binding
+            // Gắn sự kiện đợi binding dữ liệu xong
+            oBinding.attachEventOnce("dataReceived", function (oEvent) {
+                var iCount = oEvent.getSource().getLength(); // Lấy số lượng dòng kết quả
+
+                // Set model trực tiếp theo kiểu bạn muốn
+                oView.setModel(new JSONModel({ count: iCount }), "CategoryCount");
+
+                // Update no data text nếu không có kết quả
+                if (aTableSearchState.length > 0 && iCount === 0) {
+                    oTable.setNoDataText("No matching categories found.");
+                } else {
+                    oTable.setNoDataText("No categories available.");
+                }
+            });
+
+            // Apply filter
             oBinding.filter(aTableSearchState, "Application");
-
-            // Update no data text if no results found
-            if (aTableSearchState.length > 0 && oBinding.getLength() === 0) {
-                oTable.setNoDataText("No matching categories found.");
-            } else {
-                oTable.setNoDataText("No categories available.");
-            }
         },
         onListBookPress: function (oEvent) {
             var oItem = oEvent.getSource(); // Button -> HBox -> ColumnListItem

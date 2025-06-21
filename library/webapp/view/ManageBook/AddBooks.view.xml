@@ -1,0 +1,9 @@
+<mvc:View
+    controllerName="ui5.library.controller.ManageBook.AddBooks"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.f.semantic"
+    xmlns="sap.m"
+    xmlns:f="sap.f">
+
+
+</mvc:View>
