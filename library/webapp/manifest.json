@@ -119,7 +119,21 @@
                 },
                 {
                     "name": "Book",
-                    "pattern": "Book/Category/{CatId}:?query:",
+                    "pattern": "Category={CatId}",
+                    "target": [
+                        "TargetBook"
+                    ]
+                },
+                {
+                    "name": "AddBooks",
+                    "pattern": "AddBooks",
+                    "target": [
+                        "TargetAddBooks"
+                    ]
+                },
+                {
+                    "name":"EditBook",
+                    "pattern": "EditBook",
                     "target": [
                         "TargetBook"
                     ]
@@ -151,6 +165,20 @@
                     "clearControlAggregation": false,
                     "viewId": "Book",
                     "viewName": "ManageBook.Book"
+                },
+                "TargetAddBooks": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "AddBooks",
+                    "viewName": "ManageBook.AddBooks"
+                },
+                "TargetEditBook": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "EditBook",
+                    "viewName": "ManageBook.EditBook"
                 }
             }
         },

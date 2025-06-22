@@ -1,9 +1,127 @@
 <mvc:View
     controllerName="ui5.library.controller.ManageBook.AddBooks"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:semantic="sap.f.semantic"
-    xmlns="sap.m"
-    xmlns:f="sap.f">
+    xmlns="sap.f"
+    xmlns:m="sap.m"
+    xmlns:f="sap.ui.layout.form"
+>
+    <m:Page id="idAddBooks" showNavButton="true" navButtonPress="onNavBack" title="Add Books" class="sapUiContentPadding">
+        <DynamicPage id="ObjectPageLayout" toggleHeaderOnTitleClick="false" showFooter="true" class="sapFDynamicPageAlignContainer">
+            <title>
+                <DynamicPageTitle id="ObjectPageTitle" class="sapFDynamicPageAlignContainer">
+                    <heading>
+                        <m:Title id="ObjectPageTitle-Heading" text="Add Books" />
+                    </heading>
+                    <actions>
+                        <m:Button id="btn" text="Add Books" press="onAddBook" type="Emphasized" />
+                    </actions>
+                </DynamicPageTitle>
+            </title>
 
+            <content>
+                <m:VBox id="dynamicVBox" items="{sectionsModel>/sections}">
+                    <m:items>
+                        <m:VBox id="sectionVBox" class="sapUiSmallMargin">
+                            <f:SimpleForm
+                                id="sectionForm"
+                                maxContainerCols="2"
+                                editable="true"
+                                layout="ResponsiveGridLayout"
+                                title="{sectionsModel>title}"
+                                labelSpanL="3"
+                                labelSpanM="3"
+                                emptySpanL="4"
+                                emptySpanM="4"
+                                columnsL="1"
+                                columnsM="1"
+                                width="auto"
+                                class="sapUiLargeMarginBottom sapUxAPObjectPageSubSectionAlignContent"
+                            >
+                                <f:content>
+                                    <m:Label id="titleLabel" text="Title" required="true" design="Bold"/>
+                                    <m:Input
+                                        id="titleInput"
+                                        value="{sectionsModel>subSections/0/Title}"
+                                        valueState="{
+                                            parts: [
+                                                { path: 'sectionsModel>id' },
+                                                { path: 'validateBookModel>' }
+                                            ],
+                                            parameters: { field: 'Title' },
+                                            formatter: '.formatValueState'
+                                        }"
+                                        valueStateText="This field is required." />
 
+                                    <m:Label id="authorLabel" text="Author" required="true" design="Bold"/>
+                                    <m:Input
+                                        id="authorInput"
+                                        value="{sectionsModel>subSections/0/Author}"
+                                        valueState="{
+                                            parts: [
+                                                { path: 'sectionsModel>id' },
+                                                { path: 'validateBookModel>' }
+                                            ],
+                                            parameters: { field: 'Author' },
+                                            formatter: '.formatValueState'
+                                        }"
+                                        valueStateText="This field is required." />
+
+                                    <m:Label id="publisherLabel" text="Publisher" required="true" design="Bold"/>
+                                    <m:Input
+                                        id="publisherInput"
+                                        value="{sectionsModel>subSections/0/Publisher}"
+                                        valueState="{
+                                            parts: [
+                                                { path: 'sectionsModel>id' },
+                                                { path: 'validateBookModel>' }
+                                            ],
+                                            parameters: { field: 'Publisher' },
+                                            formatter: '.formatValueState'
+                                        }"
+                                        valueStateText="This field is required." />
+
+                                    <m:Label id="yearLabel" text="Year" required="true" design="Bold"/>
+                                    <m:Input
+                                        id="yearInput"
+                                        value="{sectionsModel>subSections/0/Year}"
+                                        valueState="{
+                                            parts: [
+                                                { path: 'sectionsModel>id' },
+                                                { path: 'validateBookModel>' }
+                                            ],
+                                            parameters: { field: 'Year' },
+                                            formatter: '.formatValueState'
+                                        }"
+                                        valueStateText="This field is required." />
+
+                                    <m:Label id="quantityLabel" text="Quantity" required="true" design="Bold"/>
+                                    <m:Input
+                                        id="quantityInput"
+                                        value="{sectionsModel>subSections/0/Quantity}"
+                                        valueState="{
+                                            parts: [
+                                                { path: 'sectionsModel>id' },
+                                                { path: 'validateBookModel>' }
+                                            ],
+                                            parameters: { field: 'Quantity' },
+                                            formatter: '.formatValueState'
+                                        }"
+                                        valueStateText="This field is required." />
+                                </f:content>
+                            </f:SimpleForm>
+                        </m:VBox>
+                    </m:items>
+                </m:VBox>
+            </content>
+
+            <footer>
+                <m:Bar id="footerBar">
+                    <m:contentRight>
+                        <m:Button id="saveButton" text="Save" type="Emphasized" press="onSave" />
+                        <m:Button id="cancelButton" text="Cancel" press="onCancel" />
+                    </m:contentRight>
+                </m:Bar>
+            </footer>
+        </DynamicPage>
+    </m:Page>
 </mvc:View>

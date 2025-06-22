@@ -14,31 +14,32 @@
         <f:title>
             <f:DynamicPageTitle id="objectPageTitle">
                 <f:heading>
-                    <VBox id="vboxHeader" class="sapUiSmallMargin">
-                        <Text
+                    <HBox id="hboxHeader" alignItems="Center" justifyContent="SpaceBetween" width="100%">
+                        <!-- Title bên trái -->
+                        <Title
                             id="categoryName"
-                            text="Category Name: {CategoryModel>/Name}"
+                            text="{CategoryModel>/Name}"
                             wrapping="true"
                             class="sapUiSmallMarginEnd" />
-                        <Text
-                            id="categoryDescription1"
-                            text="Category Description: {CategoryModel>/Description}"
-                            wrapping="true"
-                            class="sapUiSmallMarginEnd" />
-                    </VBox>
+                        <ToolbarSeparator id="toolbarSeparator1"></ToolbarSeparator>
+                        <!-- Status bên phải -->
+                        <ObjectStatus
+                            class="customObjectStatus sapUiSmallMarginBegin"
+                            id="categoryStatus"
+                            icon="{= ${CategoryModel>/Status}.toLowerCase() === 'active' ? 'sap-icon://status-completed' : 'sap-icon://status-error' }"
+                            text="{CategoryModel>/Status}"
+                            state="{= ${CategoryModel>/Status}.toLowerCase() === 'active' ? 'Success' : 'Error'}"
+                            />
+                    </HBox>
                 </f:heading>
 
                 <f:actions>
-                    <VBox id="vboxCategoryStatus" alignItems="Center" justifyContent="Center" class="sapUiSmallMarginEnd">
-                        <ObjectStatus
-                            class="custimObjectStatus"
-                            id="categoryStatus"
-                            text="{CategoryModel>/Status}"
-                            state="{= ${CategoryModel>/Status}.toLowerCase() === 'active' ? 'Success' : 'Error'}" />
-                    </VBox>
+                    <Label id="DescriptionLabel" text="Description:" class="sapUiSmallMarginEnd" />
+                    <Text id="Description" text="{CategoryModel>/Description}" wrapping="true" class="sapUiSmallMarginEnd" />
                 </f:actions>
             </f:DynamicPageTitle>
         </f:title>
+
 
         <!-- Content -->
         <f:content>
@@ -80,7 +81,7 @@
                     </columns>
 
                     <items>
-                        <ColumnListItem id="itemBookTemplate" type="Navigation" press="onBookPress">
+                        <ColumnListItem id="itemBookTemplate" type="Navigation" press="onBookEditPress">
                             <cells>
                                 <Text id="textBookTitle" text="{Title}" />
                                 <Text id="textBookAuthor" text="{Author}" />

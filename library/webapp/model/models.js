@@ -25,13 +25,24 @@ function (JSONModel, BindingMode) {
 
         AddBook: function () {
             return new JSONModel({
-                BookId: "",
-                CatId: "",
-                Title: "",
-                Author: "",
-                Publisher: "",
-                Year: "",
-                Quantity: ""
+                sections: [
+                    {
+                        id: 1,
+                        title: "Book 1",
+                        subSections: [
+                            {
+                                subTitle: "Section 1",
+                                BookId: "",
+                                CatId: "",
+                                Title: "",
+                                Author: "",
+                                Publisher: "",
+                                Year: "",
+                                Quantity: ""
+                            }
+                        ]
+                    }
+                ]
             }).setDefaultBindingMode(BindingMode.TwoWay);
         },
         validateBook: function () {

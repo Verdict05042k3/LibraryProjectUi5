@@ -1,0 +1,29 @@
+<mvc:View
+    controllerName="ui5.library.controller.ManageBook.EditBook"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.f"
+    xmlns:m="sap.m"
+    xmlns:f="sap.ui.layout.form"
+>
+
+ <m:Page id="idEditBooks" showNavButton="true" navButtonPress="onNavBack" title="Edit Books" class="sapUiContentPadding">
+
+     
+    <DynamicPage id="ObjectPageLayout1" toggleHeaderOnTitleClick="false" showFooter="true" class="sapFDynamicPageAlignContainer">
+                <title>
+                <DynamicPageTitle id="ObjectPageTitle1" class="sapFDynamicPageAlignContainer">
+                    <heading>
+                        <m:Title id="ObjectPageTitle1-Heading1" text="Edit Books" />
+                    </heading>
+                    <actions>
+                        <m:Button id="btn1" text="Edit Books" press="onEditBook" type="Emphasized" />
+                    </actions>
+                </DynamicPageTitle>
+            </title>
+
+    </DynamicPage>
+
+
+ </m:Page>
+
+</mvc:View>

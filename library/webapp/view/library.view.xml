@@ -11,7 +11,7 @@
         <f:GridContainer id="grid1"
 			                 class="sapUiSmallMargin"
 			                 snapToRow="true">
-            <GenericTile
+            <!-- <GenericTile
                         id="idGenericTile3"
                         press="onPressBorrowBook"
                         header="Borrow Book"
@@ -22,7 +22,7 @@
                         <TileContent id="idTileContent3">
                             <ImageContent id="ImageContent3" src="sap-icon://address-book" />
                         </TileContent>
-            </GenericTile>
+            </GenericTile> -->
                         
             <GenericTile
                         id="idGenericTile"
@@ -37,7 +37,7 @@
                         </TileContent>
             </GenericTile>
         
-            <GenericTile
+            <!-- <GenericTile
                     id="idGenericTile2"
                     press=""
                     header="Manage return book"
@@ -48,7 +48,7 @@
                     <TileContent id="idTileContent2">
                         <ImageContent id="ImageContent2" src="sap-icon://address-book" />
                     </TileContent>
-            </GenericTile>
+            </GenericTile> -->
         </f:GridContainer>
 
     </Page>

@@ -3,9 +3,8 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/m/MessageToast",
-    "ui5/library/model/models"
-], function (BaseController, JSONModel, Filter, FilterOperator, MessageToast, models) {
+    "sap/m/MessageToast"
+], function (BaseController, JSONModel, Filter, FilterOperator, MessageToast) {
     "use strict";
 
     return BaseController.extend("ui5.library.controller.ManageBook.Book", {
@@ -13,8 +12,6 @@ sap.ui.define([
         onInit: function () {
             var oRouter = this.getRouter();
             oRouter.getRoute("Book").attachPatternMatched(this._onObjectMatched, this);
-            this.getView().setModel(models.AddBook(), "AddBookModel");
-            this.getView().setModel(models.validateBook(), "validateBookModel");
         },
 
         _onObjectMatched: function (oEvent) {
@@ -56,7 +53,7 @@ sap.ui.define([
         },
         onDeleteSelectedBooks: function () {
                 var oTable = this.byId("bookTable");
-                var aSelectedItems = oTable.getSelectedItems(); // ✔️ đúng API cho sap.m.Table
+                var aSelectedItems = oTable.getSelectedItems(); 
                 var oModel = this.getView().getModel();
 
                 if (aSelectedItems.length === 0) {
@@ -88,15 +85,24 @@ sap.ui.define([
                 Promise.all(aPromises)
                     .then(function () {
                         MessageToast.show("Books deleted successfully.");
-                        oTable.removeSelections(); // ✔️ đúng API cho sap.m.Table
+                        oTable.removeSelections(); 
                     })
                     .catch(function () {
                         MessageToast.show("Error deleting some books.");
-                        oTable.removeSelections(); // ✔️ đúng API cho sap.m.Table
+                        oTable.removeSelections(); 
                     });
             },
-            
-    
+            onAddBook: function () {
+                this.getRouter().navTo("AddBooks");
+            },
+            onBookEditPress: function (oEvent) {
+                var oItem = oEvent.getSource();
+                var sBookId = oItem.getBindingContext().getProperty("Bookid");
+                console.log("Editing book with ID:", sBookId);
+                this.getRouter().navTo("EditBook", {
+                  
+                });
+            }
 
     });
 });
